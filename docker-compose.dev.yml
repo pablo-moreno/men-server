@@ -1,0 +1,11 @@
+version: '2'
+services:
+  mongo:
+    image: mongo
+    volumes:
+      - /var/mongo/my_app_db:/data/db
+    ports:
+      - 4424:27017
+
+  redis:
+    image: redis

@@ -1,0 +1,29 @@
+version: '2'
+services:
+  poppy:
+    image: node:10.6.0
+    container_name: poppy
+    working_dir: /app
+    volumes:
+      - .:/app
+    command: bash -c "npm run dev"
+    links:
+      - mongo
+      - redis
+    depends_on:
+      - mongo
+      - redis
+    ports:
+      - 8888:8888
+      - 6226:6226
+
+  mongo:
+    image: mongo
+    container_name: mongo_db
+    volumes:
+      - /var/mongo/my_app_db:/data/db
+    ports:
+      - 4424:27017
+
+  redis:
+    image: redis

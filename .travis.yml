@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+  - "10.6.0"
+
+services:
+  - mongodb
+  - redis
+
+cache: npm
+
+script: npm run test
