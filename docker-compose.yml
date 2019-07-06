@@ -1,8 +1,8 @@
 version: '2'
 services:
-  poppy:
+  server:
     image: node:10.6.0
-    container_name: poppy
+    container_name: server
     working_dir: /app
     volumes:
       - .:/app
@@ -14,14 +14,14 @@ services:
       - mongo
       - redis
     ports:
-      - 8888:8888
+      - 8000:8000
       - 6226:6226
 
   mongo:
     image: mongo
     container_name: mongo_db
     volumes:
-      - /var/mongo/my_app_db:/data/db
+      - /var/mongo/server:/data/db
     ports:
       - 4424:27017
 

@@ -1,8 +1,8 @@
 version: '2'
 services:
-  poppy:
+  server:
     image: node:10.6.0
-    container_name: poppy_server
+    container_name: server
     working_dir: /app
     volumes:
       - .:/app
@@ -17,12 +17,22 @@ services:
       - 80:8888
       - 443:8888
       - 6226:6226
+    environment:
+      - HOST=${HOST}
+      - PORT=${PORT}
+      - DB_URL=${DB_URL}
+      - REDIS_HOST=${REDIS_HOST}
+      - REDIS_PORT=${REDIS_PORT}
+      - SALT=${SALT}
+      - JWT_SECRET=${JWT_SECRET}
+      - SECRET_KEY=${SECRET_KEY}
+      - NODE_ENV=${NODE_ENV}
 
   mongo:
     image: mongo
     container_name: mongo_db
     volumes:
-      - /var/mongo:/data/db
+      - /var/mongo/server:/data/db
 
   redis:
     image: redis

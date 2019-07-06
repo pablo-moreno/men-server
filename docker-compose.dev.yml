@@ -3,7 +3,7 @@ services:
   mongo:
     image: mongo
     volumes:
-      - /var/mongo/my_app_db:/data/db
+      - /var/mongo/server:/data/db
     ports:
       - 4424:27017
 
